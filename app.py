@@ -54,8 +54,10 @@ def handle_message(event):
         print(f"目前累計傳送訊息數：{msg_count}")
         
     except:
-        ret = '發生錯誤！'
-        
+        ret = '發生錯誤！'  
+        # 修改前：
+        # line_bot_api.reply_message(event.reply_token, TextSendMessage(text=ret))
+        # 修改後（直接在 LINE 訊息尾巴加上次數）：
         reply_with_count = f"{ret}\n\n(累計對話次數：{msg_count})"
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_with_count))
 
