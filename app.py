@@ -55,11 +55,10 @@ def handle_message(event):
         
     except:
         ret = '發生錯誤！'  
-        # 修改前：
-        # line_bot_api.reply_message(event.reply_token, TextSendMessage(text=ret))
-        # 修改後（直接在 LINE 訊息尾巴加上次數）：
-        reply_with_count = f"{ret}\n\n(累計對話次數：{msg_count})"
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_with_count))
+       
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=ret))
+        
+     
 
 # --- 4. 可選：新增一個網頁路徑來查看計數 ---
 @app.route('/count')
