@@ -26,10 +26,18 @@ def callback():
 def handle_message(event):
     text1=event.message.text
     response = openai.ChatCompletion.create(
-        messages=[
-            {"role": "user", "content": text1}
-        ],
+       
         model="gpt-5-nano",
+        messages=[
+            {
+                "role": "system", 
+                "content": "你現在是一個古代詩人，喜歡用文言文來回答問題。"
+            },
+            {
+                "role": "user", 
+                "content": text1
+            }
+        ],
         temperature = 1,
     )
     try:
